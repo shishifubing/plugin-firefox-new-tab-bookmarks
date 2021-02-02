@@ -14,7 +14,8 @@
     "permissions": [
         "webNavigation",
         "browserSettings",
-        "bookmarks"
+        "bookmarks",
+        "storage"
     ],
     "chrome_url_overrides": {
         "newtab": "src/newtab.html"

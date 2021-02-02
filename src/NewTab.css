@@ -1,11 +1,29 @@
+.hideChildren > :not(a) {
+    display: none;
+}
+
 body {
     background-color: black;
 }
 
-#bookmarks * {
+a {
+    display: block;
     color: white;
     text-decoration: none;
-    list-style-type: none;
-    padding-left: 10px;
     font-size: large;
+    height: 100%;
+    width: 100%;
 }
+
+ul, li, div {
+    padding-left: 20px;
+}
+
+a:hover {
+    background-color: grey;
+}
+
+
+
+
+
