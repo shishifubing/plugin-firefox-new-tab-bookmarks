@@ -1,9 +1,31 @@
-.hideChildren > :not(a) {
+body {
+    background-color: black;
+}
+
+.hideChildren :not(a) {
     display: none;
 }
 
-body {
-    background-color: black;
+.hideChildren > .folderLink {
+    background:url(../icons/folder_arrow_right10.png) no-repeat;
+    background-position: 15px;
+}
+
+.folderLink {
+    background:url(../icons/folder_arrow_down10.png) no-repeat;
+    background-position: 15px;
+}
+
+#bookmarks {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    width: 1200px;
+}
+
+.rootFolder {
+    padding-left: 0;
+    width: 100%;
 }
 
 a {
@@ -13,13 +35,16 @@ a {
     text-decoration: none;
     font-size: large;
     height: 100%;
-    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 ul, li {
     padding-left: 30px;
+    display: flex;
+    flex-flow: column wrap;
+    height: 100%;
 }
-
 
 a:hover {
     background-color: grey;

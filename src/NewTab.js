@@ -46,16 +46,27 @@ function createBookmarkNode(bookmarkItem, folder) {
         node.title = title;
         if (folder !== 'bookmarks') {
             node.className = 'hideChildren';
+        } else {
+            node.classList.add('rootFolder');
         }
         var link = document.createElement('a');
+        var text = document.createTextNode(title);
         link.href = url;
-        link.text = title;
         link.title = id;
         if (tag === 'ul') {
+            link.className = 'folderLink';
             link.onclick = event => {
                 document.getElementById(event.target.title).classList.toggle('hideChildren');
             };
+            var icon = document.createElement('img');
+            icon.src = '../icons/folder_arrow.png';
+            icon.width = '10';
+            icon.height = '10';
+            icon.alt = 'folder_arrow';
+            icon.padding = '0 5px 0 0';
+            //link.appendChild(icon);
         }
+        link.appendChild(text);
         node.appendChild(link);
         document.getElementById(folder).appendChild(node);
     }
