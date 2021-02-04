@@ -2,25 +2,30 @@ body {
     background-color: black;
 }
 
-.hideChildren :not(a) {
+.hideChildren > ul, .hideChildren > li {
     display: none;
 }
 
-.hideChildren > .folderLink {
-    background:url(../icons/folder_arrow_right10.png) no-repeat;
-    background-position: 15px;
+.hideChildren > .folderLink > img {
+    transform: rotate(-90deg);
+}
+
+a > img {
+    margin: 0 3px 0 0;
 }
 
 .folderLink {
+    /*
     background:url(../icons/folder_arrow_down10.png) no-repeat;
-    background-position: 15px;
+    background-position:15px;
+    */
 }
 
 #bookmarks {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    width: 1200px;
+    width: 1000px;
 }
 
 .rootFolder {
@@ -30,24 +35,38 @@ body {
 
 a {
     display: block;
-    padding: 10px 0 10px 30px;
-    color: white;
+    padding: 0;
+    color: rgb(200,200,200);
     text-decoration: none;
     font-size: large;
     height: 100%;
-    text-overflow: ellipsis;
+    text-overflow: clip;
     overflow: hidden;
+    outline: none;
 }
 
-ul, li {
-    padding-left: 30px;
+li {
+    margin-left: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
+    outline: none;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 10px;
     display: flex;
     flex-flow: column wrap;
     height: 100%;
 }
 
+ul:hover:not(.rootFolder) {
+    outline: 1px solid white;
+}
+
 a:hover {
-    background-color: grey;
+    color: white;
 }
 
 

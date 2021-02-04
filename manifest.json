@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "New tab bookmarks",
-    "version": "0.1",
+    "version": "0.12",
     "description": "new tab bookmarks",
     "icons": {
         "48": "icons/black-square48.png"
