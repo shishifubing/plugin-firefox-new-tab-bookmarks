@@ -14,13 +14,6 @@ a > img {
     margin: 0 3px 0 0;
 }
 
-.folderLink {
-    /*
-    background:url(../icons/folder_arrow_down10.png) no-repeat;
-    background-position:15px;
-    */
-}
-
 #bookmarks {
     display: flex;
     flex-flow: row nowrap;
@@ -63,6 +56,11 @@ ul {
 
 ul:hover:not(.rootFolder) {
     outline: 1px solid white;
+    /*background-repeat: repeat-y;
+    background-image: url(../icons/line.png);
+    background-size: 10px;
+    background-position: 10px 10%;
+    */
 }
 
 a:hover {
