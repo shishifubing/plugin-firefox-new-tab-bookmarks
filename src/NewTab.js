@@ -12,7 +12,7 @@
 
 
 function displayBookmarkTree(bookmarkItemTree) {
-    var bookmarkTree = createBookmarkNode(bookmarkItemTree[0]);
+    let bookmarkTree = createBookmarkNode(bookmarkItemTree[0]);
     document.getElementById('main').appendChild(bookmarkTree);
     //saveBookmarkTree(bookmarkTree);
 }
@@ -24,10 +24,10 @@ function saveBookmarkTree(bookmarkTree) {
 }
 
 function createBookmarkNode(bookmarkItem, folder) {
-    var id = bookmarkItem.id;
-    var title = bookmarkItem.title;
-    var tag = 'li';
-    var url = bookmarkItem.url;
+    let id = bookmarkItem.id;
+    let title = bookmarkItem.title;
+    let tag = 'li';
+    let url = bookmarkItem.url;
     if (!url) {
         url = '#' + title;
         tag = 'ul';
@@ -36,7 +36,7 @@ function createBookmarkNode(bookmarkItem, folder) {
         title = url
     };
 
-    var node = null;
+    let node = null;
     if (!folder) {
         node = document.createElement('div');
         id = 'bookmarks';
@@ -47,26 +47,26 @@ function createBookmarkNode(bookmarkItem, folder) {
         node.id = id;
         node.title = title;
         if (folder.id !== 'bookmarks') {
-            node.className = 'hideChildren';
+            node.className = 'collapse';
         } else {
             node.classList.add('rootFolder');
         }
-        var link = document.createElement('a');
-        var text = document.createTextNode(title);
+        let link = document.createElement('a');
+        let text = document.createTextNode(title);
         link.href = url;
         link.title = id;
         if (tag === 'ul') {
             if (!node.classList.contains('rootFolder')) {
                 node.onclick = event => {
-                    event.target.classList.toggle('hideChildren');
+                    event.target.classList.toggle('collapse');
                 };
             }
             link.className = 'folderLink';
             link.onclick = event => {
-                document.getElementById(event.target.title).classList.toggle('hideChildren');
+                document.getElementById(event.target.title).classList.toggle('collapse');
                 console.log(event.target.title);
             };
-            var icon = document.createElement('img');
+            let icon = document.createElement('img');
             icon.src = '../icons/folder_arrow.png';
             icon.width = '10';
             icon.height = '10';

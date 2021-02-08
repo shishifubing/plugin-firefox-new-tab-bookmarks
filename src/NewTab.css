@@ -2,11 +2,11 @@ body {
     background-color: black;
 }
 
-.hideChildren > ul, .hideChildren > li {
+.collapse > ul, .collapse > li {
     display: none;
 }
 
-.hideChildren > .folderLink > img {
+.collapse > .folderLink > img {
     transform: rotate(-90deg);
 }
 
