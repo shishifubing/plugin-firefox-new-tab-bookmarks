@@ -50,33 +50,29 @@ function createNode(bookmarkItem, folder) {
     let title = bookmarkItem.title ? bookmarkItem.title : url;
     let node = document.createElement('div');
     node.setAttribute('id', id);
+    node.setAttribute('title', id);
     node.setAttribute('class', 'd-flex flex-column rounded-3 p-1');
     node.style.cursor = 'pointer';
     let nodeHeader = document.createElement('div');
     nodeHeader.setAttribute('id', id + '-header');
+    nodeHeader.setAttribute('title', id);
     nodeHeader.setAttribute('class', 'list-group-item bg-dark rounded-3');
     let link = document.createElement('a');
     link.setAttribute('class', 'text-decoration-none text-light rounded-3 m-1');
+    link.style.display = 'block';
+    link.setAttribute('title', id);
     let nodeBody = document.createElement('div');
     nodeBody.setAttribute('id', id + '-content');
     nodeBody.setAttribute('class', 'offset-1');
+    nodeBody.setAttribute('title', id);
     if (url) {
         link.setAttribute('href', url);
         link.classList.add('bg-dark');
     } else {
         node.classList.add('border-node');
-        nodeHeader.setAttribute('title', id);
-        nodeHeader.addEventListener('click',
-            (event) => {
-                document.getElementById(event.target.title + '-content').classList.toggle('collapse');
-                document.getElementById(event.target.title + '-header-icon').classList.toggle('header-icon-folder-turned');
-                event.stopPropagation();
-            });
-        nodeBody.addEventListener('click',
-            (event) => {
-                document.getElementById(event.target.id + '-content').classList.toggle('collapse');
-                event.stopPropagation();
-            });
+        link.addEventListener('click', (event) => collapseBorder(event));
+        nodeBody.addEventListener('click', (event) => collapseBorder(event));
+        node.addEventListener('click', (event) => collapseBorder(event));
         let icon = document.createElement('img');
         icon.setAttribute('id', nodeHeader.id + '-icon');
         icon.setAttribute('class', 'me-2 header-icon-folder');
@@ -96,6 +92,14 @@ function createNode(bookmarkItem, folder) {
     if (!url) { node.appendChild(nodeBody); }
     nodeHeader.appendChild(link);
     return nodeBody;
+}
+
+function collapseBorder(event) {
+    if (!event.target.href) {
+        document.getElementById(event.target.title + '-content').classList.toggle('collapse');
+        document.getElementById(event.target.title + '-header-icon').classList.toggle('header-icon-folder-turned');
+        event.stopPropagation();
+    }
 }
 
 function onRejected(error) {
