@@ -1,4 +1,4 @@
-body {
+/*body {
     background-color: black;
 }
 
@@ -15,10 +15,7 @@ a > img {
 }
 
 #bookmarks {
-    display: flex;
-    flex-flow: row nowrap;
     justify-content: space-between;
-    width: 1000px;
 }
 
 .rootFolder {
@@ -60,16 +57,26 @@ ul:hover:not(.rootFolder) {
     background-image: url(../icons/line.png);
     background-size: 10px;
     background-position: 10px 10%;
-    */
+    *//*
 }
 
 a:hover {
     color: white;
+}*/
+
+.border-node {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-right: 0;
 }
 
+.header-icon-folder {
+    width: 10px;
+    height: 10px;
+}
 
-
-
+.header-icon-folder-turned {
+    transform: rotate(-90deg) !important;
+}
 
 
 
