@@ -69,12 +69,12 @@ a:hover {
     border-right: 0;
 }
 
-.folder-icon {
+.header-icon-folder {
     width: 10px;
     height: 10px;
 }
 
-.arrow-turn {
+.header-icon-folder-turned {
     transform: rotate(-90deg) !important;
 }
 

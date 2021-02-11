@@ -14,7 +14,7 @@
 function displayBookmarkTree(bookmarkItemTree) {
     const bookmarks = document.createElement('div');
     bookmarks.setAttribute('id', 'bookmarks');
-    bookmarks.setAttribute('class', 'd-flex flex-column flex-lg-row flex-fill bg-dark');
+    bookmarks.setAttribute('class', 'd-flex flex-column flex-lg-row flex-fill bg-dark rounded-3');
     createBookmarkNode(bookmarkItemTree[0], bookmarks);
     document.getElementById('main').appendChild(bookmarks);
     //saveBookmarkTree(bookmarkTree);
@@ -50,33 +50,39 @@ function createNode(bookmarkItem, folder) {
     let title = bookmarkItem.title ? bookmarkItem.title : url;
     let node = document.createElement('div');
     node.setAttribute('id', id);
-    node.setAttribute('class', 'd-flex flex-column');
+    node.setAttribute('class', 'd-flex flex-column rounded-3 p-1');
+    node.style.cursor = 'pointer';
     if (folder.id === 'bookmarks') {
         node.style.width = '100%';
     }
     let nodeHeader = document.createElement('div');
     nodeHeader.setAttribute('id', id + '-header');
-    nodeHeader.setAttribute('style', 'cursor: pointer;');
-    nodeHeader.setAttribute('class', 'list-group-item bg-dark');
+    nodeHeader.setAttribute('class', 'list-group-item bg-dark rounded-3');
     let link = document.createElement('a');
-    link.setAttribute('class', 'text-decoration-none text-light round-3 m-1');
+    link.setAttribute('class', 'text-decoration-none text-light rounded-3 m-1');
     let nodeBody = document.createElement('div');
     nodeBody.setAttribute('id', id + '-content');
     nodeBody.setAttribute('class', 'offset-1');
     if (url) {
         link.setAttribute('href', url);
-        //link.classList.add('page-link');
         link.classList.add('bg-dark');
     } else {
         node.classList.add('border-node');
         nodeHeader.setAttribute('title', id);
-        nodeHeader.addEventListener('click', (event) => {
-            document.getElementById(event.target.title + '-content').classList.toggle('collapse');
-            document.getElementById(event.target.title + '-header-icon').classList.toggle('arrowTurn');
-        });
+        nodeHeader.addEventListener('click',
+            (event) => {
+                document.getElementById(event.target.title + '-content').classList.toggle('collapse');
+                document.getElementById(event.target.title + '-header-icon').classList.toggle('header-icon-folder-turned');
+                event.stopPropagation();
+            });
+        nodeBody.addEventListener('click',
+            (event) => {
+                document.getElementById(event.target.id + '-content').classList.toggle('collapse');
+                event.stopPropagation();
+            });
         let icon = document.createElement('img');
         icon.setAttribute('id', nodeHeader.id + '-icon');
-        icon.setAttribute('class', 'folder-icon');
+        icon.setAttribute('class', 'me-2 header-icon-folder');
         icon.src = '../icons/folder_arrow.png';
         icon.alt = 'folder_arrow';
         link.appendChild(icon);
