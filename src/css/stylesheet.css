@@ -57,13 +57,16 @@ ul:hover:not(.rootFolder) {
     background-image: url(../icons/line.png);
     background-size: 10px;
     background-position: 10px 10%;
-    */
+    *//*
 }
 
 a:hover {
     color: white;
 }*/
 
+.collapse > div:first-of-type > img {
+    transform: rotate(-90deg);
+}
 
 
 

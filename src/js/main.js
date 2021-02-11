@@ -12,9 +12,11 @@
 
 
 function displayBookmarkTree(bookmarkItemTree) {
-    const bookmarks = document.getElementById('bookmarks');
-    const bookmarkTree = createBookmarkNode(bookmarkItemTree[0]);
-    bookmarks.appendChild(bookmarkTree);
+    const bookmarks = document.createElement('div');
+    bookmarks.setAttribute('id', 'bookmarks');
+    bookmarks.setAttribute('class', 'bg-dark rounded-3 d-flex flex-lg-row flex-fill');
+    createBookmarkNode(bookmarkItemTree[0], bookmarks);
+    document.getElementById('main').appendChild(bookmarks);
     //saveBookmarkTree(bookmarkTree);
 }
 
@@ -25,27 +27,52 @@ function saveBookmarkTree(bookmarkTree) {
 }
 
 function createBookmarkNode(bookmarkItem, folder) {
+    let node;
+    if (bookmarkItem.id === 'root________'
+        || (folder.id === 'bookmarks' && !bookmarkItem.children.length)) {
+        node = folder;
+    } else {
+        node = createNode(bookmarkItem, folder);
+    }
+    if (bookmarkItem.children) {
+        if (bookmarkItem.children.length !== 0) {
+            for (child of bookmarkItem.children) {
+                createBookmarkNode(child, node);
+            }
+        }
+    }
+    return node;
+}
+
+function createNode(bookmarkItem, folder) {
     let id = bookmarkItem.id;
     let url = bookmarkItem.url;
     let title = bookmarkItem.title ? bookmarkItem.title : url;
     let node = document.createElement('div');
     node.setAttribute('id', id);
-    node.setAttribute('class', 'd-flex flex-column');
+    node.setAttribute('class', 'd-flex flex-column bg-dark');
     let nodeHeader = document.createElement('div');
-    nodeHeader.setAttribute('class', 'card-header');
+    nodeHeader.setAttribute('style', 'cursor: pointer;');
     let link = document.createElement('a');
-    link.appendChild(document.createTextNode(title));
-    console.log(link.innerHTML);
+    link.setAttribute('class', 'text-decoration-none text-light round-3 m-1');
     let nodeBody = document.createElement('div');
+    nodeBody.setAttribute('id', id + '-content');
+    nodeBody.setAttribute('class', 'list-group');
     if (url) {
-        link.setAttribute('class', 'list-group-item');
+        link = document.createElement('a');
+        link.appendChild(document.createTextNode(title));
+        link.setAttribute('href', url);
+        link.classList.add('list-group-item');
+        link.classList.add('round-3');
+        link.classList.add('bg-dark');
+        link.classList.add('list-group-item-action');
     } else {
-        link.setAttribute('href', '#' + id + '-list-group');
-        link.setAttribute('data-toggle', 'collapse');
-        nodeBody.setAttribute('id', id + '-list-group');
-        nodeBody.setAttribute('class', 'list-group collapse');
-    }
-    /*if (!url) {
+        nodeHeader.setAttribute('title', id + '-content');
+        nodeHeader.addEventListener('click', (event) => {
+            document.getElementById(event.target.title).classList.toggle('collapse');
+
+        });
+
         let icon = document.createElement('img');
         icon.src = '../icons/folder_arrow.png';
         icon.width = '10';
@@ -55,26 +82,15 @@ function createBookmarkNode(bookmarkItem, folder) {
         icon.title = id;
         //icon.onclick = link.onclick;
         link.appendChild(icon);
-    }*/
-    node.appendChild(nodeHeader);
-    nodeHeader.appendChild(link);
-    node.appendChild(nodeBody);
-    if (!folder) {
-        nodeBody = bookmarks;
-    } else {
-        folder.appendChild(node);
-    }
+        link.appendChild(document.createTextNode(title));
 
-    if (bookmarkItem.children) {
-        if (bookmarkItem.children.length !== 0) {
-            for (child of bookmarkItem.children) {
-                createBookmarkNode(child, nodeBody);
-            }
-        } else {
-            //node.style.display = 'none';
-        }
+
     }
-    return node;
+    folder.appendChild(node);
+    node.appendChild(nodeHeader);
+    if (!url) { node.appendChild(nodeBody); }
+    nodeHeader.appendChild(link);
+    return nodeBody;
 }
 
 function onRejected(error) {
