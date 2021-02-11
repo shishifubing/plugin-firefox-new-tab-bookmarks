@@ -52,9 +52,6 @@ function createNode(bookmarkItem, folder) {
     node.setAttribute('id', id);
     node.setAttribute('class', 'd-flex flex-column rounded-3 p-1');
     node.style.cursor = 'pointer';
-    if (folder.id === 'bookmarks') {
-        node.style.width = '100%';
-    }
     let nodeHeader = document.createElement('div');
     nodeHeader.setAttribute('id', id + '-header');
     nodeHeader.setAttribute('class', 'list-group-item bg-dark rounded-3');
@@ -87,6 +84,12 @@ function createNode(bookmarkItem, folder) {
         icon.alt = 'folder_arrow';
         link.appendChild(icon);
     }
+    if (folder.id === 'bookmarks') {
+        node.style.width = '100%';
+    } else {
+        nodeBody.classList.toggle('collapse');
+    }
+
     link.appendChild(document.createTextNode(title));
     folder.appendChild(node);
     node.appendChild(nodeHeader);
