@@ -1,4 +1,4 @@
-body {
+/*body {
     background-color: black;
 }
 
@@ -15,10 +15,7 @@ a > img {
 }
 
 #bookmarks {
-    display: flex;
-    flex-flow: row nowrap;
     justify-content: space-between;
-    width: 1000px;
 }
 
 .rootFolder {
@@ -65,7 +62,7 @@ ul:hover:not(.rootFolder) {
 
 a:hover {
     color: white;
-}
+}*/
 
 
 

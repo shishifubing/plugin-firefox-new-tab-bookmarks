@@ -16,6 +16,6 @@
         "storage"
     ],
     "chrome_url_overrides": {
-        "newtab": "src/NewTab.html"
+        "newtab": "src/index.html"
     }
 }
