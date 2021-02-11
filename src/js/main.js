@@ -14,7 +14,7 @@
 function displayBookmarkTree(bookmarkItemTree) {
     const bookmarks = document.createElement('div');
     bookmarks.setAttribute('id', 'bookmarks');
-    bookmarks.setAttribute('class', 'bg-dark rounded-3 d-flex flex-lg-row flex-fill');
+    bookmarks.setAttribute('class', 'd-flex flex-column flex-lg-row flex-fill bg-dark');
     createBookmarkNode(bookmarkItemTree[0], bookmarks);
     document.getElementById('main').appendChild(bookmarks);
     //saveBookmarkTree(bookmarkTree);
@@ -50,42 +50,38 @@ function createNode(bookmarkItem, folder) {
     let title = bookmarkItem.title ? bookmarkItem.title : url;
     let node = document.createElement('div');
     node.setAttribute('id', id);
-    node.setAttribute('class', 'd-flex flex-column bg-dark');
+    node.setAttribute('class', 'd-flex flex-column');
+    if (folder.id === 'bookmarks') {
+        node.style.width = '100%';
+    }
     let nodeHeader = document.createElement('div');
+    nodeHeader.setAttribute('id', id + '-header');
     nodeHeader.setAttribute('style', 'cursor: pointer;');
+    nodeHeader.setAttribute('class', 'list-group-item bg-dark');
     let link = document.createElement('a');
     link.setAttribute('class', 'text-decoration-none text-light round-3 m-1');
     let nodeBody = document.createElement('div');
     nodeBody.setAttribute('id', id + '-content');
-    nodeBody.setAttribute('class', 'list-group');
+    nodeBody.setAttribute('class', 'offset-1');
     if (url) {
-        link = document.createElement('a');
-        link.appendChild(document.createTextNode(title));
         link.setAttribute('href', url);
-        link.classList.add('list-group-item');
-        link.classList.add('round-3');
+        //link.classList.add('page-link');
         link.classList.add('bg-dark');
-        link.classList.add('list-group-item-action');
     } else {
-        nodeHeader.setAttribute('title', id + '-content');
+        node.classList.add('border-node');
+        nodeHeader.setAttribute('title', id);
         nodeHeader.addEventListener('click', (event) => {
-            document.getElementById(event.target.title).classList.toggle('collapse');
-
+            document.getElementById(event.target.title + '-content').classList.toggle('collapse');
+            document.getElementById(event.target.title + '-header-icon').classList.toggle('arrowTurn');
         });
-
         let icon = document.createElement('img');
+        icon.setAttribute('id', nodeHeader.id + '-icon');
+        icon.setAttribute('class', 'folder-icon');
         icon.src = '../icons/folder_arrow.png';
-        icon.width = '10';
-        icon.height = '10';
         icon.alt = 'folder_arrow';
-        icon.margin = '0 3px 0 0';
-        icon.title = id;
-        //icon.onclick = link.onclick;
         link.appendChild(icon);
-        link.appendChild(document.createTextNode(title));
-
-
     }
+    link.appendChild(document.createTextNode(title));
     folder.appendChild(node);
     node.appendChild(nodeHeader);
     if (!url) { node.appendChild(nodeBody); }

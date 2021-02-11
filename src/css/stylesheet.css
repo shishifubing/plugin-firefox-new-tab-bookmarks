@@ -64,12 +64,19 @@ a:hover {
     color: white;
 }*/
 
-.collapse > div:first-of-type > img {
-    transform: rotate(-90deg);
+.border-node {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-right: 0;
 }
 
+.folder-icon {
+    width: 10px;
+    height: 10px;
+}
 
-
+.arrow-turn {
+    transform: rotate(-90deg) !important;
+}
 
 
 
