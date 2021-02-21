@@ -1,72 +1,22 @@
-/*body {
-    background-color: black;
+.rounded-10 {
+    border-radius: 1rem;
 }
 
-.collapse > ul, .collapse > li {
-    display: none;
-}
-
-.collapse > .folderLink > img {
-    transform: rotate(-90deg);
-}
-
-a > img {
-    margin: 0 3px 0 0;
+.offset-02 {
+    margin-left: 2%;
 }
 
 #bookmarks {
-    justify-content: space-between;
+    min-height: 100vh;
 }
 
-.rootFolder {
-    padding-left: 0;
+.root-folder {
     width: 100%;
+    height: min-content;
 }
-
-a {
-    display: block;
-    padding: 0;
-    color: rgb(200,200,200);
-    text-decoration: none;
-    font-size: large;
-    height: 100%;
-    text-overflow: clip;
-    overflow: hidden;
-    outline: none;
-}
-
-li {
-    margin-left: 10px;
-    display: flex;
-    flex-flow: column nowrap;
-    height: 100%;
-    outline: none;
-}
-
-ul {
-    margin-left: 0;
-    padding-left: 10px;
-    display: flex;
-    flex-flow: column wrap;
-    height: 100%;
-}
-
-ul:hover:not(.rootFolder) {
-    outline: 1px solid white;
-    /*background-repeat: repeat-y;
-    background-image: url(../icons/line.png);
-    background-size: 10px;
-    background-position: 10px 10%;
-    *//*
-}
-
-a:hover {
-    color: white;
-}*/
 
 .border-node {
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-right: 0;
+    border: 1px solid rgba(255, 255, 255, 0.300);
 }
 
 .header-icon-folder {
@@ -77,8 +27,3 @@ a:hover {
 .header-icon-folder-turned {
     transform: rotate(-90deg) !important;
 }
-
-
-
-
-

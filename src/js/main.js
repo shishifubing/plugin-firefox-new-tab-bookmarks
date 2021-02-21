@@ -14,7 +14,7 @@
 function displayBookmarkTree(bookmarkItemTree) {
     const bookmarks = document.createElement('div');
     bookmarks.setAttribute('id', 'bookmarks');
-    bookmarks.setAttribute('class', 'd-flex flex-column flex-lg-row flex-fill bg-dark rounded-3');
+    bookmarks.setAttribute('class', 'd-flex flex-column flex-lg-row flex-fill bg-dark rounded-10');
     createBookmarkNode(bookmarkItemTree[0], bookmarks);
     document.getElementById('main').appendChild(bookmarks);
     //saveBookmarkTree(bookmarkTree);
@@ -56,14 +56,14 @@ function createNode(bookmarkItem, folder) {
     let nodeHeader = document.createElement('div');
     nodeHeader.setAttribute('id', id + '-header');
     nodeHeader.setAttribute('title', id);
-    nodeHeader.setAttribute('class', 'list-group-item bg-dark rounded-3');
+    nodeHeader.setAttribute('class', 'list-group-item bg-dark');
     let link = document.createElement('a');
-    link.setAttribute('class', 'text-decoration-none text-light rounded-3 m-1');
+    link.setAttribute('class', 'text-decoration-none text-light m-1');
     link.style.display = 'block';
     link.setAttribute('title', id);
     let nodeBody = document.createElement('div');
     nodeBody.setAttribute('id', id + '-content');
-    nodeBody.setAttribute('class', 'offset-1');
+    nodeBody.setAttribute('class', 'offset-02');
     nodeBody.setAttribute('title', id);
     if (url) {
         link.setAttribute('href', url);
@@ -81,7 +81,8 @@ function createNode(bookmarkItem, folder) {
         link.appendChild(icon);
     }
     if (folder.id === 'bookmarks') {
-        node.style.width = '100%';
+        node.classList.add('m-3');
+        node.classList.add('root-folder');
     } else {
         nodeBody.classList.toggle('collapse');
     }
