@@ -3,7 +3,7 @@
 }
 
 .offset-02 {
-    margin-left: 2%;
+    margin-left: 3%;
 }
 
 #bookmarks {
@@ -20,10 +20,14 @@
 }
 
 .header-icon-folder {
-    width: 10px;
-    height: 10px;
+    width: 0.8rem;
+    height: 0.8rem;
 }
 
 .header-icon-folder-turned {
     transform: rotate(-90deg) !important;
+}
+
+a:focus {
+    outline: none;
 }

@@ -51,12 +51,12 @@ function createNode(bookmarkItem, folder) {
     let node = document.createElement('div');
     node.setAttribute('id', id);
     node.setAttribute('title', id);
-    node.setAttribute('class', 'd-flex flex-column rounded-3 p-1');
+    node.setAttribute('class', 'd-flex flex-column rounded-1');
     node.style.cursor = 'pointer';
     let nodeHeader = document.createElement('div');
     nodeHeader.setAttribute('id', id + '-header');
     nodeHeader.setAttribute('title', id);
-    nodeHeader.setAttribute('class', 'list-group-item bg-dark');
+    nodeHeader.setAttribute('class', 'list-group-item bg-dark ps-1');
     let link = document.createElement('a');
     link.setAttribute('class', 'text-decoration-none text-light m-1');
     link.style.display = 'block';
@@ -75,7 +75,7 @@ function createNode(bookmarkItem, folder) {
         node.addEventListener('click', (event) => collapseBorder(event));
         let icon = document.createElement('img');
         icon.setAttribute('id', nodeHeader.id + '-icon');
-        icon.setAttribute('class', 'me-2 header-icon-folder');
+        icon.setAttribute('class', 'me-1 header-icon-folder');
         icon.src = '../icons/folder_arrow.png';
         icon.alt = 'folder_arrow';
         link.appendChild(icon);
@@ -85,6 +85,7 @@ function createNode(bookmarkItem, folder) {
         node.classList.add('root-folder');
     } else {
         nodeBody.classList.toggle('collapse');
+        node.classList.add('me-1');
     }
 
     link.appendChild(document.createTextNode(title));
