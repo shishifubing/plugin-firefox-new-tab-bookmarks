@@ -1,14 +1,10 @@
-(async function () {
-    /*browser.storage.local.get('bookmarks').then(
-        (object) => {
-            document.getElementById('bookmarks') = object.bookmarks;
-        },
-        
-        });*/
-    browser.bookmarks.getTree().then(
-        displayBookmarkTree, onRejected
-    );
-})()
+(
+    () => {
+        browser.bookmarks.getTree().then(
+            displayBookmarkTree, onRejected
+        );
+    }
+)()
 
 
 function displayBookmarkTree(bookmarkItemTree) {
