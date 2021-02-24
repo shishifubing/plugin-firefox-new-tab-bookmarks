@@ -1,10 +1,8 @@
-(
-    () => {
-        browser.bookmarks.getTree().then(
-            displayBookmarkTree, onRejected
-        );
-    }
-)()
+(() => {
+    browser.bookmarks.getTree().then(
+        displayBookmarkTree, onRejected
+    );
+})()
 
 
 function displayBookmarkTree(bookmarkItemTree) {
