@@ -50,7 +50,7 @@ function createNode(bookmarkItem, folder) {
     let nodeHeader = document.createElement('div');
     nodeHeader.setAttribute('id', id + '-header');
     nodeHeader.setAttribute('title', id);
-    nodeHeader.setAttribute('class', 'list-group-item bg-dark ps-1');
+    nodeHeader.setAttribute('class', 'bg-dark ps-1');
     let link = document.createElement('a');
     link.setAttribute('class', 'text-decoration-none text-light m-1');
     link.style.display = 'block';
