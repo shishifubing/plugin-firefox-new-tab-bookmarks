@@ -1,10 +1,3 @@
-(() => {
-    browser.bookmarks.getTree().then(
-        displayBookmarkTree, onRejected
-    );
-})()
-
-
 function displayBookmarkTree(bookmarkItemTree) {
     const bookmarks = document.createElement('div');
     bookmarks.setAttribute('id', 'bookmarks');
@@ -63,7 +56,7 @@ function createNode(bookmarkItem, folder) {
         link.setAttribute('href', url);
         link.classList.add('bg-dark');
     } else {
-        node.classList.add('border-node');
+        node.classList.add('border-main');
         link.addEventListener('click', (event) => collapseBorder(event));
         nodeBody.addEventListener('click', (event) => collapseBorder(event));
         node.addEventListener('click', (event) => collapseBorder(event));
@@ -73,13 +66,13 @@ function createNode(bookmarkItem, folder) {
         icon.src = '../icons/folder_arrow.png';
         icon.alt = 'folder_arrow';
         link.appendChild(icon);
-    }
-    if (folder.id === 'bookmarks') {
-        node.classList.add('m-3');
-        node.classList.add('root-folder');
-    } else {
-        nodeBody.classList.toggle('collapse');
-        node.classList.add('me-1');
+        if (folder.id === 'bookmarks') {
+            node.classList.add('m-3');
+            node.classList.add('root-folder');
+        } else {
+            nodeBody.classList.toggle('collapse');
+            node.classList.add('me-1');
+        }
     }
 
     link.appendChild(document.createTextNode(title));
@@ -102,4 +95,6 @@ function onRejected(error) {
     console.log(`An error: ${error}`);
 }
 
-
+browser.bookmarks.getTree().then(
+    displayBookmarkTree, onRejected
+);
