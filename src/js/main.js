@@ -59,9 +59,8 @@ function createNode(bookmarkItem, folder) {
         node.classList.add('border-main');
         link.addEventListener('click', (event) => collapseBorder(event));
         nodeBody.addEventListener('click', (event) => collapseBorder(event));
-        node.addEventListener('click', (event) => collapseBorder(event));
         let icon = document.createElement('img');
-        icon.setAttribute('id', nodeHeader.id + '-icon');
+        icon.setAttribute('id', id + '-icon');
         icon.setAttribute('class', 'me-1 header-icon-folder');
         icon.src = '../icons/folder_arrow.png';
         icon.alt = 'folder_arrow';
@@ -71,6 +70,8 @@ function createNode(bookmarkItem, folder) {
             node.classList.add('root-folder');
         } else {
             nodeBody.classList.toggle('collapse');
+            node.addEventListener('mouseenter', (event) => collapseBorder(event));
+            node.addEventListener('mouseleave', (event) => collapseBorder(event));
             node.classList.add('me-1');
         }
     }
@@ -85,6 +86,7 @@ function createNode(bookmarkItem, folder) {
 
 function collapseBorder(event) {
     if (!event.target.href) {
+        console.log(event.target.title + '-content| ' + event.target.id)
         document.getElementById(event.target.title + '-content').classList.toggle('collapse');
         document.getElementById(event.target.title + '-header-icon').classList.toggle('header-icon-folder-turned');
         event.stopPropagation();
