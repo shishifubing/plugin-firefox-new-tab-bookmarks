@@ -1,1 +1,3 @@
-# new-tab-bookmarks
+# Description
+
+Simple plugin for firefox, boring
