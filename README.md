@@ -1,3 +1,3 @@
 # Description
 
-Simple plugin for firefox, boring
+Simple plugin for Firefox, boring
