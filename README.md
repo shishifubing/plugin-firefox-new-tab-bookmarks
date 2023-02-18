@@ -9,8 +9,6 @@ A simple plugin for Firefox
 
 </div>
 
-# About The Project
-
 ## Features
 
 - Boring
