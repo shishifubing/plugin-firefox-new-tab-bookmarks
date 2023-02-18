@@ -1,9 +1,19 @@
+<div align="center" markdown="1">
+
 # [`plugin-firefox-new-tab-bookmarks`][url-repo]
 
 [![License][shield-license]][url-license]
 [![Status][shield-status-abandoned]][url-repo]
 
-Simple plugin for Firefox, boring
+A simple plugin for Firefox
+
+</div>
+
+# About The Project
+
+## Features
+
+- Boring
 
 <!-- relative links -->
 
