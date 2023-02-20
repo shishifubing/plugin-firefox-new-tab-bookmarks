@@ -9,7 +9,11 @@ A simple plugin for Firefox
 
 </div>
 
-## Features
+## About The Project
+
+Plugin for Firefox I started making and then lost interest
+
+### Features
 
 - Boring
 
